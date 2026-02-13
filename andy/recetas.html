@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recetas | FisioAssist</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    body {
+      background-color: #f4f8f8;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #008b8b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover, nav a.activo {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #004d4d;
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    .receta {
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .receta:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .receta img {
+      width: 280px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .receta-texto {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .receta-texto h3 {
+      color: #008b8b;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #004d4d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FisioAssist</h1>
+    <nav>
+      <ul>
+        <li><a href="panel.php">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Recetas Saludables para el Bienestar</h2>
+
+      <section class="receta">
+        <img src="Imagenes/ensaladas.webp" alt="Ensalada de Quinoa">
+        <div class="receta-texto">
+          <h3>🥗 Ensalada de Quinoa</h3>
+          <p>Ideal para fortalecer músculos y recuperar energía. Rica en proteínas, fibra y minerales esenciales.  
+          Ingredientes: quinoa cocida, tomate cherry, pepino, aceite de oliva y limón.</p>
+        </div>
+      </section>
+
+      <section class="receta">
+        <img src="Imagenes/n.webp" alt="Batido de proteína">
+        <div class="receta-texto">
+          <h3>🥤 Batido de Proteína</h3>
+          <p>Perfecto después de una sesión de rehabilitación. Mezcla proteína en polvo con plátano, avena y leche vegetal.  
+          Aporta energía y ayuda a la recuperación muscular.</p>
+        </div>
+      </section>
+
+      <section class="receta">
+        <img src="Imagenes/descargar.webp" alt="Avena con frutas">
+        <div class="receta-texto">
+          <h3>🍓 Avena con Frutas</h3>
+          <p>Un desayuno ligero y lleno de fibra. Combina avena cocida con manzana, plátano, canela y miel natural.  
+          Perfecta para empezar el día con energía.</p>
+        </div>
+      </section>
+
+      <section class="receta">
+        <img src="Imagenes/s.webp" alt="Sopa de verduras">
+        <div class="receta-texto">
+          <h3>🥣 Sopa de Verduras</h3>
+          <p>Rica en vitaminas y minerales, ayuda a la digestión y a mantener un sistema inmune fuerte.  
+          Ingredientes: zanahoria, calabaza, espinaca, apio y papa.</p>
+        </div>
+      </section>
+
+      <section class="receta">
+        <img src="Imagenes/b.webp" alt="Ensalada de pollo saludable">
+        <div class="receta-texto">
+          <h3>🍗 Ensalada de Pollo</h3>
+          <p>Comida completa y baja en grasas. Incluye pechuga asada, lechuga, aguacate y aderezo ligero.  
+          Perfecta para una comida balanceada y nutritiva.</p>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    © 2025 FisioAssist — Alimentación y Salud
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

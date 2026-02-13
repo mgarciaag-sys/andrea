@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fisioterapia - Iniciar Sesión</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    background: linear-gradient(135deg, #3db2ff, #0061a8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .card {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .left-img {
+    background: url('https://img.freepik.com/foto-gratis/fisioterapeuta-masculino-haciendo-masaje-mujer_23-2149338420.jpg') center/cover;
+    height: 100%;
+  }
+
+  .titulo {
+    font-weight: bold;
+    color: #0061a8;
+  }
+
+  .btn-primary {
+    background-color: #0061a8;
+    border: none;
+    font-weight: bold;
+  }
+
+  /* Imagen dentro del cuadro blanco */
+  .img-login {
+    width: 120px;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    border: 3px solid #0061a8;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      
+      <div class="card shadow-lg">
+        <div class="row g-0">
+
+          <!-- IMAGEN IZQUIERDA -->
+          <div class="col-md-6 left-img d-none d-md-block"></div>
+
+          <!-- LOGIN -->
+          <div class="col-md-6 p-4" id="loginBox">
+
+            <!-- Imagen interna -->
+            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983067.png" class="img-login">
+
+            <h3 class="titulo text-center mb-3">Iniciar Sesión</h3>
+
+            <form id="formLogin">
+              <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input type="email" class="form-control" id="loginEmail" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="loginPass" required>
+              </div>
+              <button class="btn btn-primary w-100">Entrar</button>
+            </form>
+
+            <p class="text-center mt-3">¿No tienes cuenta?
+              <span class="text-primary fw-bold" id="mostrarRegistro" style="cursor:pointer;">Registrarse</span>
+            </p>
+          </div>
+
+          <!-- REGISTRO -->
+          <div class="col-md-6 p-4 d-none" id="registroBox">
+
+            <!-- Imagen interna -->
+            <img src="./Imagenes/usuario.webp" class="img-login">
+
+            <h3 class="titulo text-center mb-3">Crear Cuenta</h3>
+
+            <form id="formRegistro">
+              <div class="mb-3">
+                <label class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="regNombre" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input type="email" class="form-control" id="regEmail" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="regPass" required>
+              </div>
+              <button class="btn btn-success w-100">Registrarme</button>
+            </form>
+
+            <p class="text-center mt-3">¿Ya tienes cuenta?
+              <span class="text-primary fw-bold" id="mostrarLogin" style="cursor:pointer;">Iniciar sesión</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// Cambiar entre Login y Registro
+document.getElementById("mostrarRegistro").onclick = () => {
+  loginBox.classList.add("d-none");
+  registroBox.classList.remove("d-none");
+};
+
+document.getElementById("mostrarLogin").onclick = () => {
+  registroBox.classList.add("d-none");
+  loginBox.classList.remove("d-none");
+};
+
+// Enviar Registro
+document.getElementById("formRegistro").onsubmit = (e) => {
+  e.preventDefault();
+  let datos = new FormData();
+  datos.append("nombre", regNombre.value);
+  datos.append("correo", regEmail.value);
+  datos.append("password", regPass.value);
+
+  fetch("registro.php", { method:"POST", body: datos })
+  .then(r => r.text())
+  .then(resp => {
+      if(resp === "OK"){
+          alert("Registro exitoso ✔");
+          mostrarLogin.click();
+      } else if(resp === "EXISTE"){
+          alert("El correo ya está registrado");
+      } else {
+          alert("Error al registrar");
+      }
+  });
+};
+
+// Enviar Login
+document.getElementById("formLogin").onsubmit = (e) => {
+  e.preventDefault();
+  let datos = new FormData();
+  datos.append("correo", loginEmail.value);
+  datos.append("password", loginPass.value);
+
+  fetch("login.php", { method:"POST", body: datos })
+  .then(r => r.text())
+  .then(resp => {
+      if(resp === "OK"){
+          window.location = "panel.php";
+      } else {
+          alert("Correo o contraseña incorrectos");
+      }
+  });
+};
+</script>
+
+</body>
+</html>
